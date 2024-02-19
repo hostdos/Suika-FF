@@ -84,7 +84,7 @@ const createFixedItem = (item: Fruit | SpecialItem | null = null) => {
   const label = feature?.label as Fruit;
   const radius = feature?.radius || 1;
   const mass = feature?.mass || 1;
-  fixedItem = Matter.Bodies.circle(position, prevPosition.y, radius, {
+  fixedItem = Matter.Bodies.polygon(position, prevPosition.y, 3, radius, {
     isStatic: true,
     isSensor: true,
     label: label,
