@@ -84,7 +84,7 @@ const createFixedItem = (item: Fruit | SpecialItem | null = null) => {
   const label = feature?.label as Fruit;
   const radius = feature?.radius || 1;
   const mass = feature?.mass || 1;
-  fixedItem = Matter.Bodies.polygon(position, prevPosition.y, 3, radius, {
+  fixedItem = Matter.Bodies.polygon(position, prevPosition.y, 4, radius, {
     isStatic: true,
     isSensor: true,
     label: label,
@@ -94,8 +94,8 @@ const createFixedItem = (item: Fruit | SpecialItem | null = null) => {
     render: {
       sprite: {
         texture: getImgUrl(label),
-        xScale: (radius * 2) / 250,
-        yScale: (radius * 2) / 250,
+        xScale: (radius * 2) / 400,
+        yScale: (radius * 2) / 400,
       }
     }
   });
@@ -173,7 +173,7 @@ const event = (props: UseMatterJSProps, effects: { fireConfetti: () => void, fir
     const feature = getItemTypeFeature(label);
     const radius = feature?.radius || 1;
     const mass = feature?.mass || 1;
-    const newItem = Matter.Bodies.circle(fixedItem.position.x, fixedItem.position.y, radius, {
+    const newItem = Matter.Bodies.polygon(fixedItem.position.x, fixedItem.position.y, 4, radius, {
       isStatic: false,
       label: label,
       restitution: 0,
@@ -182,8 +182,8 @@ const event = (props: UseMatterJSProps, effects: { fireConfetti: () => void, fir
       render: {
         sprite: {
           texture: getImgUrl(label),
-          xScale: (radius * 2) / 250,
-          yScale: (radius * 2) / 250,
+          xScale: (radius * 2) / 400,
+          yScale: (radius * 2) / 400,
         }
       },
     });
@@ -294,7 +294,7 @@ const event = (props: UseMatterJSProps, effects: { fireConfetti: () => void, fir
           effects.fireRapidStarConfetti();
         }
 
-        const newFruit = Matter.Bodies.circle(midX, midY, radius, {
+        const newFruit = Matter.Bodies.polygon(midX, midY, 4, radius, {
           isStatic: false,
           label: label,
           restitution: 0,
@@ -303,8 +303,8 @@ const event = (props: UseMatterJSProps, effects: { fireConfetti: () => void, fir
           render: {
             sprite: {
               texture: getImgUrl(label),
-              xScale: (radius * 2) / 250,
-              yScale: (radius * 2) / 250,
+              xScale: (radius * 2) / 400,
+              yScale: (radius * 2) / 400,
             }
           }
         });
