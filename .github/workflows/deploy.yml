@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  # Build job
+  # Build job 1
   build:
     concurrency: ci-${{ github.ref }}
     name: Build and Deploy
